@@ -1,0 +1,57 @@
+{
+  "test_case": "Acute MI Presentation",
+  "pipeline_steps": {
+    "step_1_extraction": {
+      "patient_age": 67,
+      "patient_sex": "M",
+      "chief_complaint": "Severe substernal chest pain with left arm radiation",
+      "symptoms": ["substernal chest pain", "left arm radiation", "diaphoresis", "nausea"],
+      "vital_signs": {"bp": "92/58", "hr": "110", "rr": "22", "spo2": "93%", "temp": null},
+      "medical_history": ["type 2 diabetes", "hypertension", "prior MI 5 years ago"],
+      "medications": ["aspirin", "metoprolol", "lisinopril", "atorvastatin"],
+      "physical_exam_findings": ["diaphoretic"],
+      "lab_results": [{"test": "ECG", "value": "ST elevation V1-V4"}]
+    },
+    "step_2_red_flag_assessment": {
+      "red_flags_identified": [
+        {"flag": "ST elevation in V1-V4 (STEMI)", "category": "CARDIAC", "severity": "critical"},
+        {"flag": "Hypotension (BP 92/58)", "category": "HEMODYNAMIC", "severity": "critical"},
+        {"flag": "Tachycardia (HR 110)", "category": "HEMODYNAMIC", "severity": "high"},
+        {"flag": "Hypoxia (SpO2 93%)", "category": "RESPIRATORY", "severity": "high"},
+        {"flag": "Prior MI history", "category": "CARDIAC", "severity": "moderate"}
+      ],
+      "protective_factors": ["on aspirin and statin therapy"],
+      "overall_acuity_impression": "critical"
+    },
+    "step_3_urgency_classification": {
+      "urgency_level": 5,
+      "urgency_label": "EMERGENT",
+      "reasoning": "Active STEMI with hemodynamic instability (hypotension, tachycardia) in a patient with significant cardiac history. Multiple critical red flags requiring immediate percutaneous coronary intervention.",
+      "disposition_recommendation": "immediate_ed"
+    },
+    "step_4_final_output": {
+      "triage_summary": {
+        "patient": {"age": 67, "sex": "M"},
+        "chief_complaint": "Severe substernal chest pain with left arm radiation",
+        "urgency": {"level": 5, "label": "EMERGENT"},
+        "red_flags": ["ST elevation V1-V4 (STEMI)", "Hypotension (BP 92/58)", "Tachycardia (HR 110)", "Hypoxia (SpO2 93%)", "Prior MI history"],
+        "disposition": "immediate_ed",
+        "key_findings": ["Active STEMI on ECG", "Hemodynamic compromise", "High-risk cardiac history"],
+        "recommended_actions": ["Activate cardiac catheterization lab", "Administer aspirin 325mg", "Establish IV access", "Continuous cardiac monitoring", "Serial troponins"],
+        "reasoning": "Acute STEMI with hemodynamic instability in a patient with significant cardiac history. Requires immediate percutaneous coronary intervention."
+      },
+      "metadata": {
+        "pipeline_version": "1.0.0",
+        "steps_completed": 4,
+        "total_processing_time_ms": 3250
+      }
+    }
+  },
+  "timings_ms": {
+    "extraction": 820,
+    "red_flag_assessment": 650,
+    "urgency_classification": 1200,
+    "final_output": 580,
+    "total": 3250
+  }
+}

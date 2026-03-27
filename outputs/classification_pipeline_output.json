@@ -1,0 +1,97 @@
+{
+  "routing_results": [
+    {
+      "label": "Cardiac - Acute Chest Pain",
+      "classification": {
+        "route": "cardiology",
+        "confidence": 0.95,
+        "reasoning": "Chest tightness with cardiac risk factors and elevated troponin is a clear cardiac presentation."
+      },
+      "specialized_assessment": {
+        "cardiac_risk": "high",
+        "suspected_diagnosis": "NSTEMI",
+        "heart_score_estimate": 8,
+        "recommended_workup": ["Serial troponins q3h", "12-lead ECG", "Cardiology consult", "Echocardiogram", "Heparin drip"],
+        "urgency": 5
+      },
+      "expected_route": "cardiology",
+      "match": true
+    },
+    {
+      "label": "Mental Health - Suicidal Ideation",
+      "classification": {
+        "route": "mental_health",
+        "confidence": 0.98,
+        "reasoning": "Patient presents with active suicidal ideation with plan and means. Psychiatric emergency."
+      },
+      "specialized_assessment": {
+        "safety_risk": "imminent",
+        "si_present": true,
+        "hi_present": false,
+        "psychosis_present": false,
+        "suspected_diagnosis": "Major depressive disorder, severe, with suicidal ideation",
+        "recommended_disposition": "Involuntary psychiatric hold, 1:1 observation",
+        "urgency": 5
+      },
+      "expected_route": "mental_health",
+      "match": true
+    },
+    {
+      "label": "Pediatric - Febrile Infant",
+      "classification": {
+        "route": "pediatric",
+        "confidence": 0.99,
+        "reasoning": "22-day-old neonate with fever. Pediatric route takes priority for all patients under 18."
+      },
+      "specialized_assessment": {
+        "pediatric_severity": "critical",
+        "appearance": "ill",
+        "suspected_diagnosis": "Neonatal fever — rule out sepsis, meningitis, UTI",
+        "recommended_workup": ["Full sepsis workup", "Blood cultures", "LP", "UA and urine culture", "CBC with differential", "CRP"],
+        "urgency": 5,
+        "parent_instructions": "Your baby needs to be admitted for observation and testing. Fever in a baby this young must be taken very seriously."
+      },
+      "expected_route": "pediatric",
+      "match": true
+    },
+    {
+      "label": "Respiratory - COPD Exacerbation",
+      "classification": {
+        "route": "respiratory",
+        "confidence": 0.92,
+        "reasoning": "Severe COPD exacerbation with worsening dyspnea, purulent sputum, and hypoxia."
+      },
+      "specialized_assessment": {
+        "respiratory_severity": "severe",
+        "suspected_diagnosis": "Acute exacerbation of COPD with possible superimposed pneumonia",
+        "oxygen_requirement": "Increased from baseline 1L to 2L, SpO2 86%",
+        "recommended_workup": ["ABG", "CBC", "Sputum culture", "CXR", "Procalcitonin"],
+        "urgency": 4
+      },
+      "expected_route": "respiratory",
+      "match": true
+    },
+    {
+      "label": "General - Low Back Pain",
+      "classification": {
+        "route": "general",
+        "confidence": 0.88,
+        "reasoning": "Mechanical low back pain without red flags. Does not fit specific specialty routes."
+      },
+      "specialized_assessment": {
+        "primary_concern": "Acute mechanical low back pain",
+        "suspected_diagnosis": "Lumbar strain/sprain",
+        "recommended_workup": ["No imaging needed at this time", "NSAIDs", "Physical therapy referral"],
+        "urgency": 1,
+        "disposition": "Outpatient management"
+      },
+      "expected_route": "general",
+      "match": true
+    }
+  ],
+  "summary": {
+    "routing_accuracy": "100%",
+    "correct": 5,
+    "total": 5
+  }
+}
